@@ -103,10 +103,10 @@ git clone https://github.com/htoor2026/pytorch.git
 cd pytorch
 ```
 
-Install the common dependencies:
+Install the dependencies:
 
 ```bash
-pip install torch torchvision pandas numpy scikit-learn matplotlib optuna nltk torchinfo pillow
+pip install -r requirements.txt
 ```
 
 Then open the notebooks with Jupyter:
@@ -125,14 +125,18 @@ The repository includes:
 100_Unique_QA_Dataset.csv
 ```
 
-Several Fashion-MNIST notebooks currently reference files such as:
+The Fashion-MNIST notebooks use custom PyTorch `Dataset` and `DataLoader` classes, but those classes do **not** download the underlying dataset. They define how already-loaded samples are accessed, batched, and shuffled.
+
+In the current notebooks, Fashion-MNIST data is loaded from CSV files with `pandas.read_csv(...)`, including paths such as:
 
 ```text
 fashion-mnist_train.csv
 fmnist_small.csv
 ```
 
-Those files are not stored in this repository, so they must be downloaded or uploaded separately before running the corresponding notebooks.
+Those CSV files are not stored in this repository, so they must be supplied separately before running the corresponding notebooks.
+
+An alternative would be to use `torchvision.datasets.FashionMNIST(..., download=True)`, which can download and manage Fashion-MNIST automatically and would remove the need for the CSV files.
 
 The breast-cancer training pipeline reads its dataset from a public GitHub raw-data URL.
 
@@ -145,7 +149,6 @@ The progression is intentionally incremental: later notebooks build on ideas int
 ## Next improvements
 
 - Organize notebooks into `fundamentals/`, `computer-vision/`, and `nlp/`
-- Add a reproducible `requirements.txt`
 - Standardize dataset loading so notebooks run without manual path changes
 - Add consistent train/validation/test evaluation
 - Track experiments and model configurations more systematically
