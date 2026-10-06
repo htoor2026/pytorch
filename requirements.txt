@@ -1,0 +1,11 @@
+torch
+torchvision
+pandas
+numpy
+scikit-learn
+matplotlib
+optuna
+nltk
+torchinfo
+pillow
+jupyter
