@@ -1,0 +1,37 @@
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+*.so
+.Python
+
+# Environments
+.venv/
+venv/
+env/
+ENV/
+.conda/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+
+# Secrets / local config
+.env
+.env.*
+!.env.example
+
+# PyTorch model artifacts
+*.pt
+*.pth
+*.ckpt
+
+# Logs / caches
+*.log
+.pytest_cache/
+.mypy_cache/
